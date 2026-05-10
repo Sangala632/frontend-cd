@@ -2,7 +2,7 @@ deployment:
   image: 838180513114.dkr.ecr.us-east-1.amazonaws.com/roboshop/frontend
 
   # Jenkins should override this dynamically
-  imageVersion: "v1"
+  imageVersion: "1.0.0"
 
   targetPort: 80
 
