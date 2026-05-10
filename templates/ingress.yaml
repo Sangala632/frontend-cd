@@ -1,19 +1,30 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+
 metadata:
-  name: {{ .Values.component }}
+  name: frontend
+  namespace: roboshop
 
   annotations:
     kubernetes.io/ingress.class: alb
+
     alb.ingress.kubernetes.io/group.name: roboshop-ingress
+
     alb.ingress.kubernetes.io/scheme: internet-facing
+
     alb.ingress.kubernetes.io/target-type: ip
+
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:838180513114:certificate/0d4ad40d-9703-4ad5-aeee-1ba0b36a379e
 
 spec:
   ingressClassName: alb
 
   rules:
-    - host: {{ .Values.ingress.host }}
+    - host: roboshop.hellodevsecops.space
 
       http:
         paths:
@@ -22,7 +33,6 @@ spec:
 
             backend:
               service:
-                name: {{ .Values.component }}
-
+                name: frontend
                 port:
                   number: 80

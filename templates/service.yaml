@@ -11,7 +11,7 @@ metadata:
     tier: application
 
 spec:
-  type: clusterIP
+  type: ClusterIP
   selector:
     component: frontend
     project: roboshop
