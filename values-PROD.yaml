@@ -1,12 +1,23 @@
 deployment:
-  image: 838180513114.dkr.ecr.us-east-1.amazonaws.com/roboshop/user
-  imageVersion: IMAGE_VERSION
+  image: 838180513114.dkr.ecr.us-east-1.amazonaws.com/roboshop/frontend
+
+  # Jenkins should override this dynamically
+  imageVersion: "v1"
+
   targetPort: 8080
-  # replicas: 2
+
+  replicas: 2
+
+service:
+  port: 80
+
+ingress:
+  host: roboshop.hellodevsecops.space
+
+  groupName: roboshop-ingress
+
+  certificateArn: arn:aws:acm:us-east-1:838180513114:certificate/0d4ad40d-9703-4ad5-aeee-1ba0b36a379e
+
 hpa:
   maxReplicas: 10
   utilisation: 75
-
-  configMap: 
-    MONGO_URL: mongodb://mongodb:27017/catalogue
-    REDIS_URL: redis://redis:6379

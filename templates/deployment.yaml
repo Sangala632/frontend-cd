@@ -29,6 +29,8 @@ spec:
       containers:
       - name: frontend
         image: "{{ .Values.deployment.image }}:{{ .Values.deployment.imageVersion }}" #sangala2025/frontend:v1
+        ports:
+          - containerPort: {{ .Values.deployment.targetPort }}
         resources:
           requests:
             cpu: "50m"
