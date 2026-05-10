@@ -4,7 +4,7 @@ deployment:
   # Jenkins should override this dynamically
   imageVersion: "v1"
 
-  targetPort: 8080
+  targetPort: 80
 
   replicas: 2
 
@@ -16,7 +16,7 @@ ingress:
 
   groupName: roboshop-ingress
 
-  certificateArn: arn:aws:acm:us-east-1:838180513114:certificate/0d4ad40d-9703-4ad5-aeee-1ba0b36a379e
+  certificateArn: arn:aws:acm:us-east-1:838180513114:certificate/4a046129-225d-41d8-bad9-021ca1c3bcb0
 
 hpa:
   maxReplicas: 10
